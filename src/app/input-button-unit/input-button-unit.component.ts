@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 @Component({
   selector: 'app-input-button-unit',
   template: `
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
       The title is: {{ title }}
     </p>
 
-    <input [value]="title"
-           (keyup.enter)="changeTitle($event)">
-    <button (click)="changeTitle('Button Clicked!')">
+    <input #inputElementRef
+      [value]="title"
+      (keyup.enter)="submitValue($event)">
+    <button (click)="submitValue(inputElementRef.value)">
       Save
     </button>
   `,
@@ -20,11 +22,12 @@ export class InputButtonUnitComponent implements OnInit {
 
   constructor() { }
 
+  @Output() submit: EventEmitter<string> = new EventEmitter<string>();
+
   ngOnInit(): void {
   }
- //att sätta event.target.value i html input fungerade inte, gjorde denna lösning istället
-  changeTitle(event: any) {
-    this.title = event.target.value
-    console.log(this.title)
+  //fick sätta new title any istället för string
+  submitValue(newTitle: any): void {
+    this.submit.emit(newTitle);
   }
 }
