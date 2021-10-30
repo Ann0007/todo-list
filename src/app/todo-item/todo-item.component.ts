@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { TodoItem } from '../interfaces/todo-item';
+
 @Component({
   selector: 'app-todo-item',
   template: `
@@ -11,9 +13,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
-  @Input() item: any; //var tvungen att lägga till :any till item
+  @Input() item!: TodoItem; //var tvungen att lägga till ! till item för att det skulle funka
 
-  constructor() { }
+  constructor() {
+
+   }
 
   ngOnInit(): void {
   }
