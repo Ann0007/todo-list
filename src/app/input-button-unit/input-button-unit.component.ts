@@ -22,7 +22,7 @@ export class InputButtonUnitComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+ //att sätta event.target.value i html input fungerade inte, gjorde denna lösning istället
   changeTitle(event: any) {
     this.title = event.target.value
     console.log(this.title)
