@@ -5,15 +5,14 @@ import { TodoItem } from '../interfaces/todo-item';
 @Component({
   selector: 'app-todo-item',
   template: `
-    <p>
-      todo-item works!
-    </p>
-    {{ item.title }}
+    <div class="todo-item">
+      {{ item.title }}
+    </div>
   `,
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
-  @Input() item!: TodoItem; //var tvungen att lägga till ! till item för att det skulle funka
+  @Input() item!: TodoItem; //var tvungen att lägga till ! efter item för att det skulle funka
 
   constructor() {
 
